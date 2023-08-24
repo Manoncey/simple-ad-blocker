@@ -1,0 +1,30 @@
+@import url("https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poiret+One&display=swap");
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #1c1c1e;
+    color: antiquewhite;
+  }
+}
+@media (prefers-color-scheme: light) {
+  body {
+    background-color: antiquewhite;
+    color: black;
+  }
+}
+body {
+  font-family: "Muli", sans-serif;
+  margin: 10px;
+  height: 10em;
+  width: 20em;
+}
+h1 {
+  font-family: "Poiret One", cursive;
+}
+p {
+  font-family: "Major Mono Display", monospace;
+}
+a {
+  color: #e30b5c;
+}
