@@ -1,0 +1,17 @@
+{
+  "name": "Chrome ad blocker",
+  "version": "1.0",
+  "manifest_version": 2,
+  "description": "Extension to block Ads in websites",
+  "icons": {
+    "16": "stop-ad.png",
+    "48": "stop-ad.png",
+    "128": "stop-ad.png"
+  },
+  "permissions": [
+    "webRequest", "webRequestBlocking", "<all_urls>"
+],
+"background":{
+"scripts": ["background.js"]
+}
+}
