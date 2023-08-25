@@ -54,7 +54,6 @@ const defaultFilters = [
   if (rawDomains) {
     const domains = extractDomainsFromFile(rawDomains);
     const domainsAndAds = defaultFilters.concat(domains)
-    console.log(domains)
     return domainsAndAds;
   }
   return defaultFilters;
