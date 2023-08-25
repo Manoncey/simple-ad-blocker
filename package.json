@@ -1,0 +1,8 @@
+{
+    "name": "simple-ad-blocker",
+    "version": "0.0.1",
+    "description": "An ad blocker for chrome.",
+    "keywords": ["adblocker", "chrome"],
+    "author": "Manoncey",
+    "type": "module"
+}

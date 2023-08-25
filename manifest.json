@@ -14,9 +14,11 @@
     "default_icon": "stop-ad.png"
   },
   "permissions": [
-    "webRequest", "webRequestBlocking", "<all_urls>"
+    "declarativeNetRequest"
 ],
+"host_permissions": [ "<all_urls>" ],
 "background":{
-"service_worker": "background.js"
+"service_worker": "background.js",
+"type": "module"
 }
 }

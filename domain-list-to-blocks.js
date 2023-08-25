@@ -1,25 +1,20 @@
-// import { writeFileSync, readFileSync } from "fs";
-
-async function fetchAndCreateTxtFile(url, fileName) {
+async function fetchData(url) {
   try {
     const response = await fetch(url);
     const data = await response.text();
-
-    writeFileSync(fileName, data, "utf-8");
-    console.log(`File "${fileName}" created successfully.`);
+    return data;
   } catch (error) {
     console.error("An error occurred:", error.message);
   }
 }
 
-function extractDomainsFromFile(fileName) {
+function extractDomainsFromFile(data) {
   try {
-    const data = readFileSync(fileName, "utf-8");
     const lines = data.split("\n");
     const domains = lines
       .map((line) => {
         const parts = line.split(/\s+/);
-        if (parts.length > 1) {
+        if (parts.includes("0.0.0.0") && parts.length > 1) {
           return parts[1];
         }
       })
@@ -30,10 +25,24 @@ function extractDomainsFromFile(fileName) {
     return [];
   }
 }
- async function domainsListToBlock(url) {
-  const fileName = "adservers.txt";
-  await fetchAndCreateTxtFile(url, fileName);
-  const domains = extractDomainsFromFile(fileName);
-  console.log(domains);
-  return domains;
+export async function domainsListToBlock(url) {
+  const rawDomains = await fetchData(url);
+  const defaultFilters = [
+    "*://*.doubleclick.net/*",
+    "*://partner.googleadservices.com/*",
+    "*://*.googlesyndication.com/*",
+    "*://*.google-analytics.com/*",
+    "*://creative.ak.fbcdn.net/*",
+    "*://*.adbrite.com/*",
+    "*://*.exponential.com/*",
+    "*://*.quantserve.com/*",
+    "*://*.scorecardresearch.com/*",
+    "*://*.zedo.com/*",
+  ];
+  if (rawDomains) {
+    const domains = extractDomainsFromFile(rawDomains);
+    const domainsAndAds = defaultFilters.concat(domains)
+    return domainsAndAds;
+  }
+  return defaultFilters;
 }
