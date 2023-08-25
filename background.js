@@ -7,9 +7,10 @@ async () => {
 
   chrome.webRequest.onBeforeRequest.addListener(
     function (details) {
-      return { cancel: true };
+      if (details.url.includes("facebook")) {
+        return { cancel: true };
+      }
     },
-    { urls: domainsToBlock },
-    ["blocking"]
+    { urls: domainsToBlock }
   );
 };
