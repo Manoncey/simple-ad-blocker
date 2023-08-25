@@ -13,8 +13,8 @@
     "default_title": "Block Popups",
     "default_icon": "stop-ad.png"
   },
-  "permissions": ["declarativeNetRequest"],
-  "host_permissions": ["<all_urls>"],
+  "permissions": ["declarativeNetRequest", "webRequest", "declarativeNetRequestWithHostAccess"],
+  "host_permissions": [ "<all_urls>"],
   "background": {
     "service_worker": "background.js",
     "type": "module"

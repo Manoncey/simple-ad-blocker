@@ -27,30 +27,30 @@ function extractDomainsFromFile(data) {
 }
 export async function domainsListToBlock(url) {
   const rawDomains = await fetchData(url);
-//   const defaultFilters = [
-//     "*://*.doubleclick.net/*",
-//     "*://partner.googleadservices.com/*",
-//     "*://*.googlesyndication.com/*",
-//     "*://*.google-analytics.com/*",
-//     "*://creative.ak.fbcdn.net/*",
-//     "*://*.adbrite.com/*",
-//     "*://*.exponential.com/*",
-//     "*://*.quantserve.com/*",
-//     "*://*.scorecardresearch.com/*",
-//     "*://*.zedo.com/*",
-//   ];
-const defaultFilters = [
-    "doubleclick.net",
-    "partner.googleadservices.com/",
-    ".googlesyndication.com/",
-    ".google-analytics.com/",
-    "creative.ak.fbcdn.net/",
-    ".adbrite.com/",
-    ".exponential.com/",
-    ".quantserve.com/",
-    ".scorecardresearch.com/",
-    ".zedo.com/",
+  const defaultFilters = [
+    "*://*.doubleclick.net/*",
+    "*://partner.googleadservices.com/*",
+    "*://*.googlesyndication.com/*",
+    "*://*.google-analytics.com/*",
+    "*://creative.ak.fbcdn.net/*",
+    "*://*.adbrite.com/*",
+    "*://*.exponential.com/*",
+    "*://*.quantserve.com/*",
+    "*://*.scorecardresearch.com/*",
+    "*://*.zedo.com/*",
   ];
+// const defaultFilters = [
+//     "doubleclick.net",
+//     "partner.googleadservices.com/",
+//     ".googlesyndication.com/",
+//     ".google-analytics.com/",
+//     "creative.ak.fbcdn.net/",
+//     ".adbrite.com/",
+//     ".exponential.com/",
+//     ".quantserve.com/",
+//     ".scorecardresearch.com/",
+//     ".zedo.com/",
+//   ];
   if (rawDomains) {
     const domains = extractDomainsFromFile(rawDomains);
     const domainsAndAds = defaultFilters.concat(domains)

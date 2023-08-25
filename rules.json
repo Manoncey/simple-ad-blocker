@@ -4,7 +4,7 @@
     "priority": 1,
     "action": { "type": "block" },
     "condition" : {
-        "urlFilter" : "*://*.*/*",
+        "urlFilter" : "*://*/*",
         "resourceTypes" : ["main_frame"]
       }  }
 ]

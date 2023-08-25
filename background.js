@@ -1,27 +1,19 @@
-import { domainsListToBlock } from "./domain-list-to-blocks.js";
+import { domainsListToBlock } from "./ads-and-domains-list-to-block.js";
 
 async () => {
   const domainsToBlock = await domainsListToBlock(
     "https://hosts.anudeep.me/mirror/adservers.txt"
   );
-  const defaultFilters = [
-    "doubleclick.net",
-    "partner.googleadservices.com/",
-    ".googlesyndication.com/",
-    ".google-analytics.com/",
-    "creative.ak.fbcdn.net/",
-    ".adbrite.com/",
-    ".exponential.com/",
-    ".quantserve.com/",
-    ".scorecardresearch.com/",
-    ".zedo.com/",
-  ];
 
   chrome.webRequest.onBeforeRequest.addListener(
     function (details) {
-        if (defaultFilters.some(domain => details.url.includes(domain)))
-      return { cancel: true };
+        const condition = domainsToBlock.some((domain) => details.url.includes(domain))
+        console.log('details',details)
+      if (condition) {
+        return { cancel: true };
+      }
+      return { cancel: false };
     },
-    { urls: domainsToBlock },
+    { urls: ["<all_urls>"] }
   );
 };
